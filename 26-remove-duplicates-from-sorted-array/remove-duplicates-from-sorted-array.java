@@ -1,14 +1,13 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
-      Set<Integer> arr=new TreeSet<>();
-      for(int val:nums){
-        arr.add(val);
-      }  
-      int k=arr.size();
-      int j=0;
-      for(int val:arr){
-        nums[j++]=val;
-      }
-      return k;
+        //optimalaproach
+     int j=0;
+     for(int i=1;i<nums.length;i++){
+        if(nums[i]!=nums[j]){
+            nums[j+1]=nums[i];
+            j++;
+        }
+     }
+     return j+1;
     }
 }
