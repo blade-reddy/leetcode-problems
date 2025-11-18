@@ -1,13 +1,12 @@
 class Solution {
     public int missingNumber(int[] nums) {
-       int n=nums.length;
-       int[] freq=new int[n+1];
-       for(int num:nums){
-        freq[num]++;
-       }
-       for(int i=0;i<=n;i++){
-        if(freq[i]==0)return i;
-       }
-       return -1;
+      //ptimal approach-1
+      int n=nums.length;
+      int sum=(n*(n+1))/2;
+      int s=0;
+      for(int i=0;i<n;i++){
+        s+=nums[i];
+      }
+      return sum-s;
     }
 }
