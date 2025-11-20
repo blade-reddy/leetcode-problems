@@ -1,14 +1,13 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        int max=nums.length/2;
-        for(int i=0;i<nums.length;i++){
-                    int count=0;
-            for(int j=0;j<nums.length;j++){
-                if(nums[i]==nums[j]){
-                count++;
-            }
-            if(count>max) return nums[i];
-            }  
+        //using hashing
+        int n=nums.length;
+        HashMap<Integer,Integer> arr=new HashMap<>();
+        for(int num:nums){
+            arr.put(num,arr.getOrDefault(num,0)+1);
+        }
+        for(Map.Entry<Integer,Integer> entry:arr.entrySet()){
+            if(entry.getValue()>n/2) return entry.getKey();
         }
         return -1;
     }
