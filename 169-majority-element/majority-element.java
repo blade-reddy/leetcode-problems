@@ -1,14 +1,24 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        //using hashing
+        //boyer moore's voting algorithm
         int n=nums.length;
-        HashMap<Integer,Integer> arr=new HashMap<>();
-        for(int num:nums){
-            arr.put(num,arr.getOrDefault(num,0)+1);
+        int count=0;
+        int ele=0;
+        for(int i=0;i<n;i++){
+            if(count==0){
+                count=1;
+                ele=nums[i];
+            }else if(ele==nums[i]){
+                count++;
+            }else{
+                count--;
+            }
         }
-        for(Map.Entry<Integer,Integer> entry:arr.entrySet()){
-            if(entry.getValue()>n/2) return entry.getKey();
+        int cnt=0;
+        for(int i=0;i<n;i++){
+            if(nums[i]==ele) cnt++;
         }
+        if(cnt>n/2) return ele;
         return -1;
     }
 }
