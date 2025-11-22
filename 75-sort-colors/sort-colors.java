@@ -1,7 +1,7 @@
 class Solution {
     public void sortColors(int[] nums) {
         /*
-        brutte force approcah - sorting the array
+        1) brutte force approcah - sorting the array
        int n=nums.length;
        for(int i=0;i<nums.length;i++){
         int j=i;
@@ -11,7 +11,7 @@ class Solution {
             nums[j-1]=temp;
             j--;
         }
-       } */
+       }
        //using loops
        int count0=0,count1=0,count2=0;
 for(int i=0;i<nums.length;i++){
@@ -22,5 +22,24 @@ for(int i=0;i<nums.length;i++){
 for(int i=0;i<count0;i++)nums[i]=0;
 for(int i=count0;i<count0+count1;i++)nums[i]=1;
 for(int i=count0+count1;i<nums.length;i++)nums[i]=2;
+*/
+//Dutch national flag algorithm - most optimal
+  int low=0,mid=0,high=nums.length-1;
+        while(mid<=high){
+            if(nums[mid]==0){
+                int temp=nums[low];
+                nums[low]=nums[mid];
+                nums[mid]=temp;
+                mid++;
+                low++;
+            }else if(nums[mid]==1){
+                mid++;
+            }else{
+                int temp=nums[high];
+                nums[high]=nums[mid];
+                nums[mid]=temp;
+                high--;
+            }
+        }
     }
 }
