@@ -12,7 +12,7 @@ class Solution {
         for(int i=0;i<m+n;i++){
             nums1[i]=res.get(i);
         }
-        */
+        
         //two-pointer approach
         int i=m-1;
         int j=0;
@@ -31,5 +31,27 @@ class Solution {
         for(int k=m;k<m+n;k++){
             nums1[k]=nums2[k-m];
         }
+        */
+        // more optimised - GAP method
+        int len = m + n;
+    int gap = (len / 2) + (len % 2);
+    for (int i = m; i < m + n; i++) {
+      nums1[i] = nums2[i - m];
+    }
+    while (gap > 0) {
+      int left = 0;
+      int right = gap;
+      while (right < len) {
+        if (nums1[left] > nums1[right]) {
+          int temp = nums1[right];
+          nums1[right] = nums1[left];
+          nums1[left] = temp;
+        }
+        right++;
+        left++;
+      }
+      if (gap == 1) gap = 0;
+    else gap = (gap / 2) + (gap % 2);
+    }
     }
 }
