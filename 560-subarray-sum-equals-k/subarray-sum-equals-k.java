@@ -26,7 +26,8 @@ class Solution {
     return count;
     */
     //optimal version- using prefix sum+hashmap.
-  int count=0,sum=0;
+  int count=0;
+       int sum=0;
        Map<Integer,Integer> mpp=new HashMap<>();
        mpp.put(0,1);
        for(int i=0;i<nums.length;i++){
