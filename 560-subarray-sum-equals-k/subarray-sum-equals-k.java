@@ -14,7 +14,6 @@ class Solution {
       }
     }
     return count;
-    */
     //better approach - O(n2)
     int count = 0;
     for (int i = 0; i < nums.length; i++) {
@@ -25,19 +24,18 @@ class Solution {
       }
     }
     return count;
-    /*
+    */
     //optimal version- using prefix sum+hashmap.
-    int count=0;
+  int count=0;
        int sum=0;
        Map<Integer,Integer> mpp=new HashMap<>();
+       mpp.put(0,1);
        for(int i=0;i<nums.length;i++){
          sum+=nums[i];
-         if(sum==k) count++;
          int rem=sum-k;
-         if(mpp.containsKey(rem)) count++;
-         if(!mpp.containsKey(sum))mpp.put(sum,i);
+         count+=mpp.getOrDefault(rem,0);
+         mpp.put(sum,mpp.getOrDefault(sum,0)+1);
        } 
        return count;
-       */
     }
 }
