@@ -1,3 +1,4 @@
+/*
 class Solution {
     public int lowerBound(int[]nums, int target){
         int low=0,high=nums.length-1;
@@ -42,12 +43,61 @@ class Solution {
         }
     }
     return new int[]{first,last}; 
-    */
+    
 //using upper bound and lower bounds
  int a=lowerBound(nums,target);
         if (a==nums.length || nums[a]!=target) return new int[]{-1,-1};
 
         int b=upperBound(nums,target)-1;
+
+        return new int[]{a,b};
+    }
+}
+*/
+//using only binary search
+class Solution {
+    public int firstOccurrence(int[]nums, int target){
+        int low=0,high=nums.length-1;
+        int ans=-1;
+        while(low<=high){
+            int mid=(low+high)/2;
+
+            if(nums[mid]==target){
+                ans=mid;
+                high=mid-1;
+            }
+            else if(nums[mid]<target){
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
+            }
+        }
+        return ans;
+    }
+    public int lastOccurrence(int[]nums, int target){
+        int low=0,high=nums.length-1;
+        int ans=-1;
+        while(low<=high){
+            int mid=(low+high)/2;
+
+            if(nums[mid]==target){
+                ans=mid;
+                low=mid+1;
+            }
+            else if(nums[mid]<target){
+                low=mid+1;
+            }else{
+                high=mid-1;
+            }
+        }
+        return ans;
+    }
+    public int[] searchRange(int[] nums, int target) {
+        int a=firstOccurrence(nums,target);
+        if (a==-1) return new int[]{-1,-1};
+
+        int b=lastOccurrence(nums,target);
 
         return new int[]{a,b};
     }
