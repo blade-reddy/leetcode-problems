@@ -5,6 +5,7 @@ class Solution {
             if ((long) i * (long) i <= x)
                 ans = i;
             else
+             
                 break;
         }
         return ans;
