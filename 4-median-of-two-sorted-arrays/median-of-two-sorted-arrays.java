@@ -56,7 +56,7 @@ class Solution {
 
     int low = 0, high = n1;
     while (low <= high) {
-      int mid1 = (low + high) >>> 1;
+      int mid1 = (low + high)/2;
 
       int mid2 = left - mid1;
 
