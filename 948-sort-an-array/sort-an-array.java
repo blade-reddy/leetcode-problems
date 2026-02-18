@@ -39,6 +39,7 @@ class Solution {
         mergesort(nums, 0, n - 1);
         return nums;
     }
+
     static {
         Runtime.getRuntime().gc();
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
