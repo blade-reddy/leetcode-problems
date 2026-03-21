@@ -1,5 +1,5 @@
 class Solution {
- public int[] reverse(int[]arr,int start,int end){
+ public void reverse(int[]arr,int start,int end){
         while(start<end){
             int temp=arr[start];
             arr[start]=arr[end];
@@ -7,7 +7,6 @@ class Solution {
             start++;
             end--;
         }
-        return arr;
     }
     public void rotate(int[] nums, int k) {
         int n=nums.length;
