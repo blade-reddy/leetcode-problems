@@ -1,14 +1,15 @@
 class Solution {
     public void moveZeroes(int[] nums) {
-        //optimal approach
-        int j=0;
-      for(int i=0;i<nums.length;i++){
-        if(nums[i]!=0){
-              int temp = nums[i];
-                nums[i] = nums[j];
-                nums[j] = temp;
-                j++;
+        List<Integer> arr=new ArrayList<>();
+        for(int i:nums){
+            if(i!=0) arr.add(i);
         }
+        for(int i=0;i<nums.length;i++){
+            if(i<arr.size()){
+                nums[i]=arr.get(i);
+            }else{
+                nums[i]=0;
+            }
         }
     }
 }
